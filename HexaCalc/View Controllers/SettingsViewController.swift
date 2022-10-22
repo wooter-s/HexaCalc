@@ -32,6 +32,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     var preferences = UserPreferences.getDefaultPreferences()
     
+    // MARK: wootag 立即执行函数
     private let tableView: UITableView = {
         let table = UITableView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), style: .grouped)
         
@@ -89,6 +90,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        // view 的尺寸
         tableView.frame = view.bounds
     }
     
@@ -145,9 +147,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             // Hexadecimal
             if indexPath.row == 0 {
                 // Show switch
+                // !!!: 把tableView列表内的指定内容取出来；列表里的类型没有跟id绑定， 所以也要手动转型
                 let cell = self.tableView.dequeueReusableCell(withIdentifier: "HexadecimalSwitch", for: indexPath) as! SwitchTableViewCell
                 cell.configure(isOn: preferences.hexTabState, colour: self.preferences.colour)
                 cell.textLabel?.text = "Hexadecimal"
+                // MARK: wootag 添加事件处理方式
                 cell.self.cellSwitch.addTarget(self, action: #selector(self.hexadecimalSwitchPressed), for: .touchUpInside)
                 return cell
             }

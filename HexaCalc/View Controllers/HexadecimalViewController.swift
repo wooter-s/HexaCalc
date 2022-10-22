@@ -222,7 +222,9 @@ class HexadecimalViewController: UIViewController {
         
         // Deactivate current contraints and remove them from the list, new constraints will be calculated and activated as device rotates
         if (UIDevice.current.userInterfaceIdiom == .pad) {
+            // 更新UI状态， 更新view
             NSLayoutConstraint.deactivate(currentContraints)
+            // 更新model
             currentContraints.removeAll()
         }
     }
@@ -351,7 +353,6 @@ class HexadecimalViewController: UIViewController {
             deletePressed(DELBtn)
         }
     }
-    
     //Function for setting up output label gesture recognizers
     func setupOutputLabelGestureRecognizers() {
         let labelSingleTap = UITapGestureRecognizer(target: self, action: #selector(self.labelSingleTapped(_:)))

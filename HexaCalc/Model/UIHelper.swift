@@ -43,12 +43,14 @@ class UIHelper {
         return constraints
     }
     
+    // !!!: 像这种元素多并且是重复的内容， 还是使用代码构建更加方便
     // Setup calculator button constraints
     static func setupButtonConstraints(singleButtons: [RoundButton], doubleButtons: [RoundButton], screenWidth: CGFloat, calculator: Int) -> [NSLayoutConstraint] {
         let stackWidth = screenWidth - 20
         var singleButtonSize: CGFloat = 0
         var doubleButtonSize: CGFloat = 0
         var buttonFontSize: CGFloat = 0
+        // ???: CGFloat 可以直接用Int来初始化， 这是默认会转类型码？？？
         
         var constraints = [NSLayoutConstraint]()
         
@@ -70,6 +72,7 @@ class UIHelper {
         }
         
         for button in singleButtons {
+            // !!!: 度和高度设置成一次样的， 为什么就会显示成圆角??, 原来是RoundButton实现了圆角
             constraints.append(button.widthAnchor.constraint(equalToConstant: singleButtonSize))
             constraints.append(button.heightAnchor.constraint(equalToConstant: singleButtonSize))
             button.titleLabel?.font = UIFont.systemFont(ofSize: buttonFontSize, weight: .semibold)

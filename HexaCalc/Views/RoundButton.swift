@@ -13,6 +13,7 @@ class RoundButton: UIButton {
 
     @IBInspectable var roundButton:Bool = false {
         didSet {
+            // !!!: 这种属性代理的方式， 是不是框架ViewController也是这么实现
             if roundButton {
                 layer.cornerRadius = frame.height / 2
             }

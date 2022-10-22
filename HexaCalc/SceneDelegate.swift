@@ -23,6 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         //Grab the storyboard and ensure that the tab bar controller is reinstantiated with the details below.
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        // MARK:  storyboard 里直接配置的TabBarController
         let tabBarController = storyboard.instantiateViewController(withIdentifier: "tabBarController") as! UITabBarController
 
         for child in tabBarController.viewControllers ?? [] {
